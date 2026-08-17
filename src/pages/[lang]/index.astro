@@ -1,0 +1,583 @@
+---
+import { languages, defaultLang, getTranslations } from '../../i18n/config.js';
+
+export async function getStaticPaths() {
+  return Object.keys(languages).map(code => ({
+    params: { lang: code },
+    props: { lang: code },
+  }));
+}
+
+const { lang } = Astro.props;
+const t = getTranslations(lang);
+
+const projects = [
+  {
+    title: t.portfolio.wwfp.title,
+    description: t.portfolio.wwfp.desc,
+    url: 'https://wwfp-website.pages.dev/en/',
+    tags: ['Astro', 'HTML', 'CSS', 'JS', 'SEO'],
+    image: '/wwfp-logo.png'
+  },
+  {
+    title: t.portfolio.woascht.title,
+    description: t.portfolio.woascht.desc,
+    url: '#',
+    tags: ['Astro', 'HTML', 'CSS', 'Responsive'],
+    image: '🥃'
+  }
+];
+
+const services = [
+  { icon: '🎨', title: t.services.webDesign.title, text: t.services.webDesign.text },
+  { icon: '💻', title: t.services.development.title, text: t.services.development.text },
+  { icon: '📱', title: t.services.responsive.title, text: t.services.responsive.text },
+  { icon: '🔍', title: t.services.seo.title, text: t.services.seo.text },
+  { icon: '⚡', title: t.services.performance.title, text: t.services.performance.text },
+  { icon: '🤝', title: t.services.handover.title, text: t.services.handover.text }
+];
+
+const langPrefix = lang === defaultLang ? '' : `/${lang}`;
+---
+
+<!DOCTYPE html>
+<html lang={lang}>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Christian Karg — Web Developer & Designer</title>
+  <meta name="description" content={t.hero.subtitle} />
+  <meta name="keywords" content="web developer, web designer, Austria, Dornbirn, WordPress, Astro, HTML, CSS, JavaScript, SEO, responsive design" />
+  <meta property="og:title" content="Christian Karg — Web Developer & Designer" />
+  <meta property="og:description" content={t.hero.subtitle} />
+  <meta property="og:type" content="website" />
+  <style>
+    :root {
+      --bg: #0f0f0f;
+      --surface: #1a1a1a;
+      --surface2: #242424;
+      --accent: #e94560;
+      --accent2: #0f3460;
+      --text: #f5f5f5;
+      --text-dim: #a0a0a0;
+      --border: #333;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* === NAV === */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(15, 15, 15, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav .logo {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    nav .logo span { color: var(--accent); }
+
+    nav .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    nav a {
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.3s;
+    }
+
+    nav a:hover { color: var(--accent); }
+
+    .nav-toggle {
+      display: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--text);
+      background: none;
+      border: none;
+    }
+
+    /* === LANG SWITCHER === */
+    .lang-switcher {
+      position: relative;
+      display: inline-block;
+    }
+
+    .lang-btn {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .lang-btn:hover { border-color: var(--accent); }
+
+    .lang-dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.5rem;
+      min-width: 140px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+      z-index: 200;
+    }
+
+    .lang-dropdown.open { display: block; }
+
+    .lang-dropdown a {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 0.75rem;
+      border-radius: 6px;
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+    }
+
+    .lang-dropdown a:hover {
+      background: var(--surface2);
+      color: var(--text);
+    }
+
+    .lang-dropdown a.active {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* === HERO === */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 6rem 2rem 4rem;
+      background: linear-gradient(135deg, rgba(15,15,15,0.85) 0%, rgba(15,52,96,0.85) 100%), url('/hero-bg.jpg') center center / cover no-repeat;
+      position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(circle at 50% 50%, rgba(233, 69, 96, 0.15) 0%, transparent 60%);
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+
+    .hero h1 .accent { color: var(--accent); }
+
+    .hero p {
+      font-size: 1.3rem;
+      color: var(--text-dim);
+      max-width: 600px;
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+
+    .hero .cta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      position: relative;
+    }
+
+    .btn {
+      padding: 0.9rem 2rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+      border: 2px solid var(--accent);
+    }
+
+    .btn-primary:hover { background: transparent; color: var(--accent); }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text);
+      border: 2px solid var(--border);
+    }
+
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* === SECTIONS === */
+    section {
+      padding: 5rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      text-align: center;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--text-dim);
+      font-size: 1.1rem;
+      margin-bottom: 3rem;
+    }
+
+    /* === SERVICES === */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .service-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      transition: all 0.3s;
+    }
+
+    .service-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+    .service-card .icon { font-size: 2.5rem; margin-bottom: 1rem; }
+    .service-card h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
+    .service-card p { color: var(--text-dim); font-size: 0.95rem; }
+
+    /* === PORTFOLIO === */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+
+    .portfolio-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all 0.3s;
+      text-decoration: none;
+      color: var(--text);
+      display: block;
+    }
+
+    .portfolio-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+
+    .portfolio-card .project-image {
+      height: 160px;
+      background: var(--accent2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      overflow: hidden;
+      padding: 20px;
+    }
+
+    .portfolio-card .project-image img {
+      max-height: 100%;
+      max-width: 100%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .portfolio-card .project-body { padding: 1.5rem; }
+    .portfolio-card h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
+    .portfolio-card p { color: var(--text-dim); font-size: 0.9rem; margin-bottom: 1rem; }
+
+    .portfolio-card .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+    .tag {
+      background: var(--surface2);
+      color: var(--text-dim);
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+    }
+
+    /* === ABOUT === */
+    .about { text-align: center; max-width: 700px; margin: 0 auto; }
+    .about p { color: var(--text-dim); font-size: 1.1rem; margin-bottom: 1rem; }
+    .about-photo {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--accent);
+      margin: 0 auto 2rem;
+      display: block;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    }
+
+    .about .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    .skill-badge {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 0.5rem 1.2rem;
+      border-radius: 25px;
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+
+    /* === CONTACT === */
+    .contact { text-align: center; }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 1rem 1.5rem;
+      border-radius: 10px;
+      text-decoration: none;
+      color: var(--text);
+      transition: all 0.3s;
+      font-size: 0.95rem;
+    }
+
+    .contact-link:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* === FOOTER === */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid var(--border);
+      color: var(--text-dim);
+      font-size: 0.85rem;
+    }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1rem; }
+      nav .nav-right { gap: 1rem; }
+      nav ul {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--surface);
+        flex-direction: column;
+        padding: 1rem 2rem;
+        gap: 1rem;
+        border-bottom: 1px solid var(--border);
+      }
+
+      nav ul.open { display: flex; }
+      .nav-toggle { display: block; }
+
+      .hero h1 { font-size: 2.2rem; }
+      .hero p { font-size: 1.1rem; }
+
+      section { padding: 3rem 1.5rem; }
+      .section-title { font-size: 1.7rem; }
+      .services-grid { grid-template-columns: 1fr; }
+      .portfolio-grid { grid-template-columns: 1fr; }
+
+      .lang-dropdown { right: -1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href={`${langPrefix}/#top`} class="logo">Christian<span>.</span>Karg</a>
+    <div class="nav-right">
+      <button class="nav-toggle" onclick="document.getElementById('navmenu').classList.toggle('open')">☰</button>
+      <ul id="navmenu">
+        <li><a href={`${langPrefix}/#services`}>{t.nav.services}</a></li>
+        <li><a href={`${langPrefix}/#portfolio`}>{t.nav.portfolio}</a></li>
+        <li><a href={`${langPrefix}/#about`}>{t.nav.about}</a></li>
+        <li><a href={`${langPrefix}/#contact`}>{t.nav.contact}</a></li>
+      </ul>
+      <div class="lang-switcher">
+        <button class="lang-btn" onclick="document.getElementById('langdrop').classList.toggle('open')">
+          {languages[lang].flag} {lang.toUpperCase()} ▾
+        </button>
+        <div class="lang-dropdown" id="langdrop">
+          {Object.entries(languages).map(([code, info]) => (
+            <a href={`/${code === defaultLang ? '' : code}/`} class={code === lang ? 'active' : ''}>
+              {info.flag} {info.name}
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <h1>Web Developer <span class="accent">&</span> Designer</h1>
+    <p>{t.hero.subtitle}</p>
+    <div class="cta">
+      <a href={`${langPrefix}/#portfolio`} class="btn btn-primary">{t.hero.viewWork}</a>
+      <a href={`${langPrefix}/#contact`} class="btn btn-secondary">{t.hero.getInTouch}</a>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <h2 class="section-title">{t.services.title}</h2>
+    <p class="section-subtitle">{t.services.subtitle}</p>
+    <div class="services-grid">
+      {services.map(s => (
+        <div class="service-card">
+          <div class="icon">{s.icon}</div>
+          <h3>{s.title}</h3>
+          <p>{s.text}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section id="portfolio">
+    <h2 class="section-title">{t.portfolio.title}</h2>
+    <p class="section-subtitle">{t.portfolio.subtitle}</p>
+    <div class="portfolio-grid">
+      {projects.map(p => (
+        <a href={p.url} class="portfolio-card" target={p.url !== '#' ? '_blank' : ''}>
+          <div class="project-image">{p.image.startsWith('/') ? <img src={p.image} alt={p.title} /> : p.image}</div>
+          <div class="project-body">
+            <h3>{p.title}</h3>
+            <p>{p.description}</p>
+            <div class="tags">
+              {p.tags.map(tag => <span class="tag">{tag}</span>)}
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <h2 class="section-title">{t.about.title}</h2>
+    <p class="section-subtitle">{t.about.subtitle}</p>
+    <div class="about">
+      <img src="/chris-profile.jpg" alt="Christian Karg" class="about-photo" />
+      <p>{t.about.p1}</p>
+      <p>{t.about.p2}</p>
+      <p>{t.about.p3}</p>
+      <div class="skills">
+        <span class="skill-badge">HTML</span>
+        <span class="skill-badge">CSS</span>
+        <span class="skill-badge">JavaScript</span>
+        <span class="skill-badge">WordPress</span>
+        <span class="skill-badge">Astro</span>
+        <span class="skill-badge">Responsive Design</span>
+        <span class="skill-badge">SEO</span>
+        <span class="skill-badge">UI/UX</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2 class="section-title">{t.contact.title}</h2>
+    <p class="section-subtitle">{t.contact.subtitle}</p>
+    <div class="contact-links">
+      <a href="mailto:wwfp-office@proton.me" class="contact-link">✉️ wwfp-office@proton.me</a>
+      <a href="tel:+436505972706" class="contact-link">📱 +43 650 5972706</a>
+      <a href="https://github.com/freepeoplewwfp" target="_blank" class="contact-link">🐙 GitHub</a>
+      <a href="https://www.upwork.com" target="_blank" class="contact-link">💼 Upwork</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>{t.footer}</p>
+  </footer>
+
+  <script>
+    // Close mobile menu on link click
+    document.querySelectorAll('#navmenu a').forEach(a => {
+      a.addEventListener('click', () => {
+        document.getElementById('navmenu').classList.remove('open');
+      });
+    });
+
+    // Close lang dropdown on outside click
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.lang-switcher')) {
+        document.getElementById('langdrop')?.classList.remove('open');
+      }
+    });
+  </script>
+
+</body>
+</html>

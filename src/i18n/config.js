@@ -1,0 +1,211 @@
+export const languages = {
+  en: { name: 'English', flag: '🇬🇧' },
+  de: { name: 'Deutsch', flag: '🇩🇪' },
+  fr: { name: 'Français', flag: '🇫🇷' },
+  es: { name: 'Español', flag: '🇪🇸' },
+  it: { name: 'Italiano', flag: '🇮🇹' },
+};
+
+export const defaultLang = 'en';
+
+export const translations = {
+  en: {
+    nav: { services: 'Services', portfolio: 'Portfolio', about: 'About', contact: 'Contact' },
+    hero: {
+      title: 'Web Developer & Designer',
+      subtitle: 'Modern, responsive websites for small businesses and nonprofits. Based in Dornbirn, Austria.',
+      viewWork: 'View My Work',
+      getInTouch: 'Get in Touch',
+    },
+    services: {
+      title: 'What I Do',
+      subtitle: 'Full-service web development and design',
+      webDesign: { title: 'Web Design', text: 'Clean, modern, responsive websites that look great on every device.' },
+      development: { title: 'Development', text: 'WordPress, Astro, HTML, CSS, JavaScript — built from scratch, no bloated templates.' },
+      responsive: { title: 'Responsive', text: 'Mobile-first design that works flawlessly on desktop, tablet, and phone.' },
+      seo: { title: 'SEO', text: 'On-page SEO: clean URLs, meta tags, alt texts, fast loading, semantic HTML.' },
+      performance: { title: 'Performance', text: 'Fast-loading websites with optimized code and images. Speed matters.' },
+      handover: { title: 'Handover', text: 'Short training so you can update your own content. No locked-in dependency.' },
+    },
+    portfolio: {
+      title: 'Recent Work',
+      subtitle: "Websites I've designed and built",
+      wwfp: { title: 'WWFP — Free People Organization', desc: 'Multilingual non-profit website with 127 pages across 9 languages. Full-screen video hero, shop section with 5 artisan stores, SEO optimized. Built with Astro, deployed on Cloudflare Pages.' },
+      woascht: { title: 'Woascht Wohl — Business Website', desc: 'Responsive business website for a schnapps distillery. Product pages, events, contact form. Built with Astro.' },
+    },
+    about: {
+      title: 'About Me',
+      subtitle: 'A bit about who I am',
+      p1: "I'm a web developer and designer based in Dornbirn, Austria, specializing in clean, modern, and responsive websites for small businesses, nonprofits, and creative professionals.",
+      p2: 'With a background in interior decoration and design, I bring a strong eye for layout, color, and spatial harmony to every web project. I also run a nonprofit organization, which gives me hands-on experience with digital infrastructure, content creation, and social media management.',
+      p3: 'I believe a website should be fast, accessible, and easy to maintain. No locked-in dependency, no unnecessary complexity — just clean work that serves your goals.',
+    },
+    contact: {
+      title: "Let's Work Together",
+      subtitle: 'Have a project in mind? Let\'s talk.',
+      email: 'Email',
+      phone: 'Phone',
+    },
+    footer: '© 2026 Christian Karg — Web Developer & Designer — Dornbirn, Austria',
+  },
+  de: {
+    nav: { services: 'Leistungen', portfolio: 'Portfolio', about: 'Über mich', contact: 'Kontakt' },
+    hero: {
+      title: 'Web Developer & Designer',
+      subtitle: 'Moderne, responsive Websites für kleine Unternehmen und Nonprofits. Sitz in Dornbirn, Österreich.',
+      viewWork: 'Meine Arbeiten ansehen',
+      getInTouch: 'Kontakt aufnehmen',
+    },
+    services: {
+      title: 'Was ich mache',
+      subtitle: 'Full-Service Web-Entwicklung und Design',
+      webDesign: { title: 'Web Design', text: 'Saubere, moderne, responsive Websites die auf jedem Gerät gut aussehen.' },
+      development: { title: 'Entwicklung', text: 'WordPress, Astro, HTML, CSS, JavaScript — von Grund auf gebaut, keine aufgeblähten Templates.' },
+      responsive: { title: 'Responsive', text: 'Mobile-first Design das einwandfrei auf Desktop, Tablet und Handy funktioniert.' },
+      seo: { title: 'SEO', text: 'On-Page SEO: saubere URLs, Meta-Tags, Alt-Texte, schnelles Laden, semantisches HTML.' },
+      performance: { title: 'Performance', text: 'Schnell ladende Websites mit optimiertem Code und Bildern. Geschwindigkeit zählt.' },
+      handover: { title: 'Übergabe', text: 'Kurze Schulung damit du deine Inhalte selbst aktualisieren kannst. Keine Abhängigkeit.' },
+    },
+    portfolio: {
+      title: 'Aktuelle Arbeiten',
+      subtitle: 'Websites die ich gestaltet und gebaut habe',
+      wwfp: { title: 'WWFP — Free People Organization', desc: 'Mehrsprachige Nonprofit-Website mit 127 Seiten in 9 Sprachen. Full-Screen Video-Hero, Shop-Bereich mit 5 Handwerksläden, SEO-optimiert. Gebaut mit Astro, deployed auf Cloudflare Pages.' },
+      woascht: { title: 'Woascht Wohl — Business Website', desc: 'Responsive Business-Website für eine Schnapsbrennerei. Produktseiten, Events, Kontaktformular. Gebaut mit Astro.' },
+    },
+    about: {
+      title: 'Über mich',
+      subtitle: 'Ein bisschen über wer ich bin',
+      p1: 'Ich bin Web-Entwickler und Designer in Dornbirn, Österreich, spezialisiert auf saubere, moderne und responsive Websites für kleine Unternehmen, Nonprofits und kreative Profis.',
+      p2: 'Mit einem Hintergrund in Interior Design bringe ich ein starkes Auge für Layout, Farbe und räumliche Harmonie in jedes Web-Projekt mit. Ich leite auch eine Nonprofit-Organisation, was mir praktische Erfahrung mit digitaler Infrastruktur, Content-Erstellung und Social Media Management gibt.',
+      p3: 'Ich glaube dass eine Website schnell, zugänglich und einfach zu pflegen sein sollte. Keine Abhängigkeit, keine unnötige Komplexität — einfach saubere Arbeit die deinen Zielen dient.',
+    },
+    contact: {
+      title: 'Lasst uns zusammenarbeiten',
+      subtitle: 'Du hast ein Projekt im Kopf? Lass uns reden.',
+      email: 'E-Mail',
+      phone: 'Telefon',
+    },
+    footer: '© 2026 Christian Karg — Web Developer & Designer — Dornbirn, Österreich',
+  },
+  fr: {
+    nav: { services: 'Services', portfolio: 'Portfolio', about: 'À propos', contact: 'Contact' },
+    hero: {
+      title: 'Web Developer & Designer',
+      subtitle: 'Sites web modernes et responsives pour petites entreprises et associations. Basé à Dornbirn, Autriche.',
+      viewWork: 'Voir mon travail',
+      getInTouch: 'Me contacter',
+    },
+    services: {
+      title: 'Ce que je fais',
+      subtitle: 'Développement et design web complet',
+      webDesign: { title: 'Web Design', text: 'Sites web propres, modernes et responsives qui rendent bien sur tous les appareils.' },
+      development: { title: 'Développement', text: 'WordPress, Astro, HTML, CSS, JavaScript — construits from scratch, sans templates surchargés.' },
+      responsive: { title: 'Responsive', text: 'Design mobile-first qui fonctionne parfaitement sur desktop, tablette et téléphone.' },
+      seo: { title: 'SEO', text: 'SEO on-page : URLs propres, meta tags, textes alt, chargement rapide, HTML sémantique.' },
+      performance: { title: 'Performance', text: 'Sites à chargement rapide avec code et images optimisés. La vitesse compte.' },
+      handover: { title: 'Formation', text: 'Brève formation pour que vous puissiez mettre à jour vos contenus. Aucune dépendance.' },
+    },
+    portfolio: {
+      title: 'Travaux récents',
+      subtitle: 'Sites web que j\'ai conçus et construits',
+      wwfp: { title: 'WWFP — Free People Organization', desc: 'Site web multilingue pour une association à but non lucratif avec 127 pages en 9 langues. Hero vidéo plein écran, section boutique avec 5 magasins d\'artisans, SEO optimisé. Construit avec Astro, déployé sur Cloudflare Pages.' },
+      woascht: { title: 'Woascht Wohl — Site d\'entreprise', desc: 'Site web responsive pour une distillerie. Pages produits, événements, formulaire de contact. Construit avec Astro.' },
+    },
+    about: {
+      title: 'À propos de moi',
+      subtitle: 'Un peu sur qui je suis',
+      p1: 'Je suis développeur et designer web basé à Dornbirn, en Autriche, spécialisé dans les sites web propres, modernes et responsives pour les petites entreprises, les associations et les professionnels créatifs.',
+      p2: 'Avec un bagage en décoration intérieure et design, j\'apporte un œil aiguisé pour la mise en page, les couleurs et l\'harmonie spatiale à chaque projet web. Je gère également une association à but non lucratif, ce qui me donne une expérience pratique en infrastructure numérique, création de contenu et gestion des réseaux sociaux.',
+      p3: 'Je crois qu\'un site web doit être rapide, accessible et facile à maintenir. Aucune dépendance verrouillée, aucune complexité inutile — juste un travail propre qui sert vos objectifs.',
+    },
+    contact: {
+      title: 'Travaillons ensemble',
+      subtitle: 'Vous avez un projet en tête ? Parlons-en.',
+      email: 'E-mail',
+      phone: 'Téléphone',
+    },
+    footer: '© 2026 Christian Karg — Web Developer & Designer — Dornbirn, Autriche',
+  },
+  es: {
+    nav: { services: 'Servicios', portfolio: 'Portafolio', about: 'Sobre mí', contact: 'Contacto' },
+    hero: {
+      title: 'Web Developer & Designer',
+      subtitle: 'Sitios web modernos y responsives para pequeñas empresas y organizaciones sin fines de lucro. Basado en Dornbirn, Austria.',
+      viewWork: 'Ver mi trabajo',
+      getInTouch: 'Contáctame',
+    },
+    services: {
+      title: 'Lo que hago',
+      subtitle: 'Desarrollo y diseño web completo',
+      webDesign: { title: 'Web Design', text: 'Sitios web limpios, modernos y responsives que se ven genial en cada dispositivo.' },
+      development: { title: 'Desarrollo', text: 'WordPress, Astro, HTML, CSS, JavaScript — construidos desde cero, sin plantillas infladas.' },
+      responsive: { title: 'Responsive', text: 'Diseño mobile-first que funciona perfectamente en desktop, tablet y teléfono.' },
+      seo: { title: 'SEO', text: 'SEO on-page: URLs limpias, meta tags, textos alt, carga rápida, HTML semántico.' },
+      performance: { title: 'Rendimiento', text: 'Sitios web de carga rápida con código e imágenes optimizados. La velocidad importa.' },
+      handover: { title: 'Capacitación', text: 'Breve capacitación para que puedas actualizar tu propio contenido. Sin dependencia.' },
+    },
+    portfolio: {
+      title: 'Trabajos recientes',
+      subtitle: 'Sitios web que he diseñado y construido',
+      wwfp: { title: 'WWFP — Free People Organization', desc: 'Sitio web multilingüe para una organización sin fines de lucro con 127 páginas en 9 idiomas. Hero de video a pantalla completa, sección de tienda con 5 tiendas de artesanos, SEO optimizado. Construido con Astro, desplegado en Cloudflare Pages.' },
+      woascht: { title: 'Woascht Wohl — Sitio empresarial', desc: 'Sitio web responsive para una destilería. Páginas de productos, eventos, formulario de contacto. Construido con Astro.' },
+    },
+    about: {
+      title: 'Sobre mí',
+      subtitle: 'Un poco sobre quién soy',
+      p1: 'Soy desarrollador y diseñador web basado en Dornbirn, Austria, especializado en sitios web limpios, modernos y responsives para pequeñas empresas, organizaciones sin fines de lucro y profesionales creativos.',
+      p2: 'Con formación en decoración de interiores y diseño, aporto una fuerte visión para el diseño, color y armonía espacial a cada proyecto web. También dirijo una organización sin fines de lucro, lo que me da experiencia práctica en infraestructura digital, creación de contenido y gestión de redes sociales.',
+      p3: 'Creo que un sitio web debe ser rápido, accesible y fácil de mantener. Sin dependencias bloqueadas, sin complejidad innecesaria — solo trabajo limpio que sirve a tus objetivos.',
+    },
+    contact: {
+      title: 'Trabajemos juntos',
+      subtitle: '¿Tienes un proyecto en mente? Hablemos.',
+      email: 'Correo',
+      phone: 'Teléfono',
+    },
+    footer: '© 2026 Christian Karg — Web Developer & Designer — Dornbirn, Austria',
+  },
+  it: {
+    nav: { services: 'Servizi', portfolio: 'Portfolio', about: 'Su di me', contact: 'Contatto' },
+    hero: {
+      title: 'Web Developer & Designer',
+      subtitle: 'Siti web moderni e responsivi per piccole aziende e organizzazioni no-profit. Basato a Dornbirn, Austria.',
+      viewWork: 'Vedi il mio lavoro',
+      getInTouch: 'Contattami',
+    },
+    services: {
+      title: 'Cosa faccio',
+      subtitle: 'Sviluppo e design web completo',
+      webDesign: { title: 'Web Design', text: 'Siti web puliti, moderni e responsivi che sembrano fantastici su ogni dispositivo.' },
+      development: { title: 'Sviluppo', text: 'WordPress, Astro, HTML, CSS, JavaScript — costruiti da zero, senza template gonfiati.' },
+      responsive: { title: 'Responsive', text: 'Design mobile-first che funziona perfettamente su desktop, tablet e telefono.' },
+      seo: { title: 'SEO', text: 'SEO on-page: URL puliti, meta tag, testi alt, caricamento veloce, HTML semantico.' },
+      performance: { title: 'Prestazioni', text: 'Siti web a caricamento rapido con codice e immagini ottimizzati. La velocità conta.' },
+      handover: { title: 'Formazione', text: 'Breve formazione per poter aggiornare i tuoi contenuti. Nessuna dipendenza.' },
+    },
+    portfolio: {
+      title: 'Lavori recenti',
+      subtitle: 'Siti web che ho progettato e costruito',
+      wwfp: { title: 'WWFP — Free People Organization', desc: 'Sito web multilingue per un\'organizzazione no-profit con 127 pagine in 9 lingue. Hero video a schermo intero, sezione negozio con 5 negozi di artigiani, SEO ottimizzato. Costruito con Astro, distribuito su Cloudflare Pages.' },
+      woascht: { title: 'Woascht Wohl — Sito aziendale', desc: 'Sito web responsive per una distilleria. Pagine prodotto, eventi, modulo di contatto. Costruito con Astro.' },
+    },
+    about: {
+      title: 'Su di me',
+      subtitle: 'Qualcosa su chi sono',
+      p1: 'Sono uno sviluppatore e designer web con sede a Dornbirn, in Austria, specializzato in siti web puliti, moderni e responsivi per piccole aziende, organizzazioni no-profit e professionisti creativi.',
+      p2: 'Con una formazione in arredamento e design, porto un forte occhio per layout, colori e armonia spaziale in ogni progetto web. Dirigo anche un\'organizzazione no-profit, che mi dà esperienza pratica in infrastruttura digitale, creazione di contenuti e gestione dei social media.',
+      p3: 'Credo che un sito web debba essere veloce, accessibile e facile da mantenere. Nessuna dipendenza bloccata, nessuna complessità non necessaria — solo lavoro pulito che serve ai tuoi obiettivi.',
+    },
+    contact: {
+      title: 'Lavoriamo insieme',
+      subtitle: 'Hai un progetto in mente? Parliamone.',
+      email: 'Email',
+      phone: 'Telefono',
+    },
+    footer: '© 2026 Christian Karg — Web Developer & Designer — Dornbirn, Austria',
+  },
+};
+
+export function getTranslations(lang) {
+  return translations[lang] || translations[defaultLang];
+}
