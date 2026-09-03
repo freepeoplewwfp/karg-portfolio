@@ -1,0 +1,410 @@
+---
+import { languages, defaultLang, getTranslations } from '../../i18n/config.js';
+import { getGrapheneT } from '../../i18n/graphene.js';
+import { phones, supportedModels } from '../../data/graphene-phones.js';
+
+export async function getStaticPaths() {
+  return Object.keys(languages).map(code => ({
+    params: { lang: code },
+    props: { lang: code },
+  }));
+}
+
+const { lang } = Astro.props;
+const t = getTranslations(lang);
+const g = getGrapheneT(lang);
+const langPrefix = lang === defaultLang ? '' : `/${lang}`;
+---
+
+<!DOCTYPE html>
+<html lang={lang}>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{g.heroTitle} — Christian Karg</title>
+  <meta name="description" content={g.heroSubtitle} />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <style>
+    :root {
+      --bg: #0f0f0f;
+      --surface: #1a1a1a;
+      --surface2: #242424;
+      --accent: #4ade80;
+      --accent-red: #e94560;
+      --text: #f5f5f5;
+      --text-dim: #a0a0a0;
+      --border: #333;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .topbar {
+      padding: 1.2rem 2rem;
+      border-bottom: 1px solid var(--border);
+      background: rgba(15,15,15,0.95);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .topbar .logo { color: var(--text); text-decoration: none; font-weight: 700; }
+    .topbar .logo span { color: var(--accent-red); }
+    .back-link { color: var(--text-dim); text-decoration: none; font-size: 0.9rem; }
+    .back-link:hover { color: var(--accent); }
+
+    .hero {
+      position: relative;
+      min-height: 45vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 4rem 2rem;
+      background: linear-gradient(135deg, rgba(15,15,15,0.9) 0%, rgba(13,40,24,0.85) 100%), url('/images/grapheneos-banner-clean.png') center center / cover no-repeat;
+    }
+    .hero h1 { font-size: 2.8rem; font-weight: 800; margin-bottom: 0.8rem; color: var(--accent); }
+    .hero p { font-size: 1.2rem; color: var(--text-dim); max-width: 600px; }
+
+    section { padding: 4rem 2rem; max-width: 1100px; margin: 0 auto; }
+
+    .phone-layout {
+      display: flex;
+      gap: 3rem;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+    .phone-display {
+      width: 280px;
+      flex-shrink: 0;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .phone-display img { width: 100%; height: auto; max-height: 380px; object-fit: contain; }
+    .phone-info { flex: 1; min-width: 300px; }
+    .phone-info h2 { font-size: 1.8rem; margin-bottom: 1rem; }
+    .phone-info-text { color: var(--text-dim); margin-bottom: 1.5rem; font-size: 1.05rem; }
+
+    .pricing-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.2rem 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .pricing-box h3 { font-size: 1.1rem; margin-bottom: 0.8rem; color: var(--accent); }
+    .pricing-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.95rem;
+    }
+    .pricing-row:last-child { border-bottom: none; }
+    .pricing-row .label { color: var(--text); font-weight: 500; }
+    .pricing-row .value { color: var(--accent); font-weight: 600; }
+
+    .options-title { font-size: 1.2rem; margin-bottom: 0.8rem; }
+    .option-card {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem 1.2rem;
+      margin-bottom: 0.8rem;
+      font-size: 0.95rem;
+    }
+    .option-icon { font-size: 1.4rem; flex-shrink: 0; }
+    .option-card strong { color: var(--accent); }
+
+    .note-box {
+      font-size: 0.9rem;
+      color: var(--text-dim);
+      background: var(--surface);
+      border-left: 3px solid var(--accent);
+      padding: 1rem 1.2rem;
+      border-radius: 8px;
+    }
+
+    .section-title { font-size: 2rem; text-align: center; margin-bottom: 2.5rem; }
+
+    /* ORDER FORM */
+    .order-form-wrapper {
+      max-width: 620px;
+      margin: 0 auto;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2.5rem;
+    }
+    .order-form { display: flex; flex-direction: column; gap: 1rem; }
+    .form-row { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .form-group { flex: 1; min-width: 200px; display: flex; flex-direction: column; }
+    .form-group label { font-size: 0.85rem; font-weight: 600; margin-bottom: 0.4rem; color: var(--text-dim); }
+    .form-group input, .form-group select, .form-group textarea {
+      padding: 0.7rem 0.9rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-family: inherit;
+      background: var(--surface2);
+      color: var(--text);
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+    .order-submit {
+      margin-top: 0.5rem;
+      width: 100%;
+      background: var(--accent);
+      color: #0d1b0d;
+      border: none;
+      padding: 1rem;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .order-submit:hover { opacity: 0.85; }
+    .form-note { text-align: center; font-size: 0.85rem; color: var(--text-dim); margin-top: 0.5rem; }
+    .order-success {
+      display: none;
+      text-align: center;
+      padding: 1.5rem;
+      background: rgba(74, 222, 128, 0.15);
+      border: 1px solid var(--accent);
+      border-radius: 10px;
+      color: var(--accent);
+      font-size: 1.05rem;
+    }
+
+    /* WHAT IS GRAPHENEOS */
+    .info-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .info-box h2 { color: var(--accent); margin-bottom: 1rem; font-size: 1.6rem; }
+    .info-box p { color: var(--text-dim); margin-bottom: 1rem; }
+
+    /* MODELS */
+    .models-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .model-gen { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1.2rem; }
+    .model-gen h3 { color: var(--accent); font-size: 1.05rem; margin-bottom: 0.6rem; border-bottom: 1px solid var(--border); padding-bottom: 0.4rem; }
+    .model-gen ul { list-style: none; }
+    .model-gen li { font-size: 0.9rem; color: var(--text-dim); padding: 0.2rem 0; }
+
+    .cta-box {
+      text-align: center;
+      max-width: 550px;
+      margin: 0 auto;
+      background: var(--surface);
+      border: 1px solid var(--accent);
+      border-radius: 16px;
+      padding: 2rem;
+    }
+    .cta-box h3 { font-size: 1.4rem; margin-bottom: 0.6rem; }
+    .cta-box p { color: var(--text-dim); margin-bottom: 1.2rem; }
+    .btn-cta {
+      display: inline-block;
+      background: var(--accent);
+      color: #0d1b0d;
+      padding: 0.8rem 1.8rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    footer { text-align: center; padding: 2rem; border-top: 1px solid var(--border); color: var(--text-dim); font-size: 0.85rem; }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2rem; }
+      .phone-layout { flex-direction: column; align-items: center; }
+      .order-form-wrapper { padding: 1.5rem; }
+      section { padding: 2.5rem 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <a href={`${langPrefix}/`} class="logo">Christian<span>.</span>Karg</a>
+    <a href={`${langPrefix}/#portfolio`} class="back-link">← {t.nav.portfolio}</a>
+  </div>
+
+  <section class="hero">
+    <h1>{g.heroTitle}</h1>
+    <p>{g.heroSubtitle}</p>
+  </section>
+
+  <section>
+    <div class="phone-layout">
+      <div class="phone-display">
+        <img src="/images/grapheneos-phone-shaped.png" alt="GrapheneOS Phone" />
+      </div>
+      <div class="phone-info">
+        <h2>{g.introTitle}</h2>
+        <p class="phone-info-text">{g.introText}</p>
+
+        <div class="pricing-box">
+          <h3>💶 {g.pricingTitle}</h3>
+          {phones.map(p => (
+            <div class="pricing-row">
+              <span class="label">📱 {p.name}</span>
+              <span class="value">{lang === 'de' ? p.price : p.priceEn}</span>
+            </div>
+          ))}
+        </div>
+
+        <h3 class="options-title">{g.optionsTitle}</h3>
+        <div class="option-card">
+          <span class="option-icon">📦</span>
+          <span><strong>{g.option1Title}</strong> — {g.option1Text}</span>
+        </div>
+        <div class="option-card">
+          <span class="option-icon">🛒</span>
+          <span><strong>{g.option2Title}</strong> — {g.option2Text}</span>
+        </div>
+
+        <div class="note-box">💡 {g.note}</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">{g.formTitle}</h2>
+    <div class="order-form-wrapper">
+      <form class="order-form" id="graphene-order-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="order-name">{g.formName} *</label>
+            <input type="text" id="order-name" name="name" required />
+          </div>
+          <div class="form-group">
+            <label for="order-email">{g.formEmail} *</label>
+            <input type="email" id="order-email" name="email" required />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="order-phone">{g.formPhone}</label>
+            <input type="tel" id="order-phone" name="phone" />
+          </div>
+          <div class="form-group">
+            <label for="order-model">{g.formModel} *</label>
+            <select id="order-model" name="model" required>
+              <option value="">{g.formModelPlaceholder}</option>
+              {phones.map(p => (
+                <option value={p.key}>{p.name} ({lang === 'de' ? p.price : p.priceEn})</option>
+              ))}
+              <option value="other">{lang === 'de' ? 'Anderes Pixel 8+ Modell' : 'Other Pixel 8+ model'}</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="order-option">{g.formOption} *</label>
+            <select id="order-option" name="option" required>
+              <option value="">{g.formOptionPlaceholder}</option>
+              <option value="self">{g.formOption1}</option>
+              <option value="we-buy">{g.formOption2}</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="order-message">{g.formMessage}</label>
+          <textarea id="order-message" name="message" rows="3" placeholder={g.formMessagePlaceholder}></textarea>
+        </div>
+        <button type="submit" class="order-submit">{g.formSubmit}</button>
+        <p class="form-note">{g.formNote}</p>
+      </form>
+      <div id="order-success" class="order-success">{g.formSuccess}</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="info-box">
+      <h2>{g.whatIsTitle}</h2>
+      <p>{g.whatIsText1}</p>
+      <p>{g.whatIsText2}</p>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">{g.modelsTitle}</h2>
+    <p style="text-align:center; color: var(--text-dim); margin-bottom: 2rem;">{g.modelsIntro}</p>
+    <div class="models-grid">
+      {Object.entries(supportedModels).map(([gen, models]) => (
+        <div class="model-gen">
+          <h3>{gen}</h3>
+          <ul>
+            {models.map(m => <li>{m}</li>)}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section>
+    <div class="cta-box">
+      <h3>📱 {g.ctaTitle}</h3>
+      <p>{g.ctaText}</p>
+      <a href={`${langPrefix}/#contact`} class="btn-cta">{t.nav.contact}</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>{t.footer}</p>
+  </footer>
+
+  <script>
+    document.getElementById('graphene-order-form')?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const form = e.target as HTMLFormElement;
+      const data = new FormData(form);
+      const payload = {
+        name: data.get('name'),
+        email: data.get('email'),
+        phone: data.get('phone'),
+        model: data.get('model'),
+        option: data.get('option'),
+        message: data.get('message'),
+      };
+      const subject = encodeURIComponent('GrapheneOS Bestellung - ' + payload.name);
+      const body = encodeURIComponent(
+        `Name: ${payload.name}\nE-Mail: ${payload.email}\nTelefon: ${payload.phone || '-'}\nModell: ${payload.model}\nOption: ${payload.option}\nAnmerkungen: ${payload.message || '-'}`
+      );
+      window.location.href = `mailto:chris@karg.design?subject=${subject}&body=${body}`;
+      form.style.display = 'none';
+      const success = document.getElementById('order-success');
+      if (success) success.style.display = 'block';
+    });
+  </script>
+
+</body>
+</html>

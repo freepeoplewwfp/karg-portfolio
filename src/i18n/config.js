@@ -4,6 +4,7 @@ export const languages = {
   fr: { name: 'Français', flag: '🇫🇷' },
   es: { name: 'Español', flag: '🇪🇸' },
   it: { name: 'Italiano', flag: '🇮🇹' },
+  ar: { name: 'العربية', flag: '🇲🇦', rtl: true },
 };
 
 export const defaultLang = 'en';
@@ -13,7 +14,7 @@ export const translations = {
     nav: { services: 'Services', portfolio: 'Portfolio', about: 'About', contact: 'Contact' },
     hero: {
       title: 'Web Developer & Designer',
-      subtitle: 'Modern, responsive websites for small businesses and nonprofits. Based in Dornbirn, Austria.',
+      subtitle: 'Modern, responsive websites for small businesses and nonprofits. Based in Dornbirn, Austria. Every project supports the WWFP non-profit mission.',
       viewWork: 'View My Work',
       getInTouch: 'Get in Touch',
     },
@@ -30,8 +31,11 @@ export const translations = {
     portfolio: {
       title: 'Recent Work',
       subtitle: "Websites I've designed and built",
-      wwfp: { title: 'WWFP — Free People Organization', desc: 'Multilingual non-profit website with 127 pages across 9 languages. Full-screen video hero, shop section with 5 artisan stores, SEO optimized. Built with Astro, deployed on Cloudflare Pages.' },
+      wwfp: { title: 'WWFP — Free People Organization', desc: 'Multilingual non-profit website with 145 pages across 9 languages. Full-screen video hero, shop section with 5 artisan stores, services page, SEO optimized. Built with Astro, deployed on Cloudflare Pages.' },
       woascht: { title: 'Woascht Wohl — Business Website', desc: 'Responsive business website for a schnapps distillery. Product pages, events, contact form. Built with Astro.' },
+      ai: { title: 'Self-Hosted AI Infrastructure', desc: 'Complete AI infrastructure with multiple LLMs, vector embeddings, memory systems, and automation pipelines. Docker, Linux, Ollama. Running on dedicated server hardware.' },
+      youtube: { title: 'YouTube Channel & Video Production', desc: 'Complete YouTube channel setup: branding, logo, banner, video production, playlist management, SEO-optimized descriptions.' },
+      services: { title: 'WWFP Web & Media Services', desc: 'Services page offering web development, AI integration, video production, graphic design, and server administration. 100% of profits support WWFP non-profit work.' },
     },
     about: {
       title: 'About Me',
@@ -39,6 +43,8 @@ export const translations = {
       p1: "I'm a web developer and designer based in Dornbirn, Austria, specializing in clean, modern, and responsive websites for small businesses, nonprofits, and creative professionals.",
       p2: 'With a background in interior decoration and design, I bring a strong eye for layout, color, and spatial harmony to every web project. I also run a nonprofit organization, which gives me hands-on experience with digital infrastructure, content creation, and social media management.',
       p3: 'I believe a website should be fast, accessible, and easy to maintain. No locked-in dependency, no unnecessary complexity — just clean work that serves your goals.',
+      p4: 'By choosing my services, you\'re also supporting the Woascht Wohl & Free People Organization (WWFP) — a non-profit dedicated to habitat rights and environmental protection. 100% of profits go directly to WWFP\'s mission. You get a great website and do something good at the same time.',
+      wwfpBadge: 'Every project supports WWFP — 100% of profits go to the non-profit mission',
     },
     contact: {
       title: "Let's Work Together",
@@ -69,8 +75,11 @@ export const translations = {
     portfolio: {
       title: 'Aktuelle Arbeiten',
       subtitle: 'Websites die ich gestaltet und gebaut habe',
-      wwfp: { title: 'WWFP — Free People Organization', desc: 'Mehrsprachige Nonprofit-Website mit 127 Seiten in 9 Sprachen. Full-Screen Video-Hero, Shop-Bereich mit 5 Handwerksläden, SEO-optimiert. Gebaut mit Astro, deployed auf Cloudflare Pages.' },
+      wwfp: { title: 'WWFP — Free People Organization', desc: 'Mehrsprachige Nonprofit-Website mit 145 Seiten in 9 Sprachen. Full-Screen Video-Hero, Shop-Bereich mit 5 Handwerksläden, Services-Seite, SEO-optimiert. Gebaut mit Astro, deployed auf Cloudflare Pages.' },
       woascht: { title: 'Woascht Wohl — Business Website', desc: 'Responsive Business-Website für eine Schnapsbrennerei. Produktseiten, Events, Kontaktformular. Gebaut mit Astro.' },
+      ai: { title: 'Self-Hosted AI Infrastructure', desc: 'Komplette AI-Infrastruktur mit mehreren LLMs, Vector-Embeddings, Memory-Systemen und Automatisierungs-Pipelines. Docker, Linux, Ollama. Läuft auf dedizierter Server-Hardware.' },
+      youtube: { title: 'YouTube Channel & Video Production', desc: 'Kompletter YouTube-Channel: Branding, Logo, Banner, Video-Produktion, Playlist-Management, SEO-optimierte Beschreibungen.' },
+      services: { title: 'WWFP Web & Media Services', desc: 'Services-Seite für Web-Entwicklung, AI-Integration, Video-Produktion, Grafik-Design und Server-Administration. 100% des Gewinns unterstützt die WWFP Nonprofit-Arbeit.' },
     },
     about: {
       title: 'Über mich',
@@ -78,6 +87,8 @@ export const translations = {
       p1: 'Ich bin Web-Entwickler und Designer in Dornbirn, Österreich, spezialisiert auf saubere, moderne und responsive Websites für kleine Unternehmen, Nonprofits und kreative Profis.',
       p2: 'Mit einem Hintergrund in Interior Design bringe ich ein starkes Auge für Layout, Farbe und räumliche Harmonie in jedes Web-Projekt mit. Ich leite auch eine Nonprofit-Organisation, was mir praktische Erfahrung mit digitaler Infrastruktur, Content-Erstellung und Social Media Management gibt.',
       p3: 'Ich glaube dass eine Website schnell, zugänglich und einfach zu pflegen sein sollte. Keine Abhängigkeit, keine unnötige Komplexität — einfach saubere Arbeit die deinen Zielen dient.',
+      p4: 'Wenn du meine Services wählst, unterstützt du gleichzeitig die Woascht Wohl & Free People Organization (WWFP) — eine Nonprofit-Organisation für Habitat-Rechte und Umweltschutz. 100% des Gewinns geht direkt an die WWFP-Mission. Du bekommst eine tolle Website und tust gleichzeitig etwas Gutes.',
+      wwfpBadge: 'Jedes Projekt unterstützt WWFP — 100% des Gewinns geht an die Nonprofit-Mission',
     },
     contact: {
       title: 'Lasst uns zusammenarbeiten',
@@ -108,8 +119,11 @@ export const translations = {
     portfolio: {
       title: 'Travaux récents',
       subtitle: 'Sites web que j\'ai conçus et construits',
-      wwfp: { title: 'WWFP — Free People Organization', desc: 'Site web multilingue pour une association à but non lucratif avec 127 pages en 9 langues. Hero vidéo plein écran, section boutique avec 5 magasins d\'artisans, SEO optimisé. Construit avec Astro, déployé sur Cloudflare Pages.' },
+      wwfp: { title: 'WWFP — Free People Organization', desc: 'Site web multilingue pour une association à but non lucratif avec 145 pages en 9 langues. Hero vidéo plein écran, section boutique avec 5 magasins d\'artisans, page services, SEO optimisé. Construit avec Astro, déployé sur Cloudflare Pages.' },
       woascht: { title: 'Woascht Wohl — Site d\'entreprise', desc: 'Site web responsive pour une distillerie. Pages produits, événements, formulaire de contact. Construit avec Astro.' },
+      ai: { title: 'Infrastructure AI Auto-Hébergée', desc: 'Infrastructure AI complète avec plusieurs LLMs, vector embeddings, systèmes de mémoire et pipelines d\'automatisation. Docker, Linux, Ollama.' },
+      youtube: { title: 'Chaîne YouTube & Production Vidéo', desc: 'Chaîne YouTube complète: branding, logo, bannière, production vidéo, gestion des playlists, descriptions SEO.' },
+      services: { title: 'WWFP Web & Media Services', desc: 'Page de services: développement web, intégration AI, production vidéo, design graphique, administration serveur. 100% des profits soutiennent le travail non lucratif de WWFP.' },
     },
     about: {
       title: 'À propos de moi',
@@ -117,6 +131,8 @@ export const translations = {
       p1: 'Je suis développeur et designer web basé à Dornbirn, en Autriche, spécialisé dans les sites web propres, modernes et responsives pour les petites entreprises, les associations et les professionnels créatifs.',
       p2: 'Avec un bagage en décoration intérieure et design, j\'apporte un œil aiguisé pour la mise en page, les couleurs et l\'harmonie spatiale à chaque projet web. Je gère également une association à but non lucratif, ce qui me donne une expérience pratique en infrastructure numérique, création de contenu et gestion des réseaux sociaux.',
       p3: 'Je crois qu\'un site web doit être rapide, accessible et facile à maintenir. Aucune dépendance verrouillée, aucune complexité inutile — juste un travail propre qui sert vos objectifs.',
+      p4: "En choisissant mes services, vous soutenez également la Woascht Wohl & Free People Organization (WWFP) — une organisation à but non lucratif dédiée aux droits d'habitat et à la protection de l'environnement. 100% des profits vont directement à la mission de WWFP.",
+      wwfpBadge: 'Chaque projet soutient WWFP — 100% des profits vont à la mission non lucrative',
     },
     contact: {
       title: 'Travaillons ensemble',
@@ -147,8 +163,11 @@ export const translations = {
     portfolio: {
       title: 'Trabajos recientes',
       subtitle: 'Sitios web que he diseñado y construido',
-      wwfp: { title: 'WWFP — Free People Organization', desc: 'Sitio web multilingüe para una organización sin fines de lucro con 127 páginas en 9 idiomas. Hero de video a pantalla completa, sección de tienda con 5 tiendas de artesanos, SEO optimizado. Construido con Astro, desplegado en Cloudflare Pages.' },
+      wwfp: { title: 'WWFP — Free People Organization', desc: 'Sitio web multilingüe para una organización sin fines de lucro con 145 páginas en 9 idiomas. Hero de video a pantalla completa, sección de tienda con 5 tiendas de artesanos, página de servicios, SEO optimizado. Construido con Astro, desplegado en Cloudflare Pages.' },
       woascht: { title: 'Woascht Wohl — Sitio empresarial', desc: 'Sitio web responsive para una destilería. Páginas de productos, eventos, formulario de contacto. Construido con Astro.' },
+      ai: { title: 'Infraestructura AI Autoalojada', desc: 'Infraestructura AI completa con múltiples LLMs, vector embeddings, sistemas de memoria y pipelines de automatización. Docker, Linux, Ollama.' },
+      youtube: { title: 'Canal de YouTube & Producción de Video', desc: 'Canal de YouTube completo: branding, logo, banner, producción de video, gestión de playlists, descripciones SEO.' },
+      services: { title: 'WWFP Web & Media Services', desc: 'Página de servicios: desarrollo web, integración AI, producción de video, diseño gráfico, administración de servidores. El 100% de las ganancias apoya el trabajo sin fines de lucro de WWFP.' },
     },
     about: {
       title: 'Sobre mí',
@@ -156,6 +175,8 @@ export const translations = {
       p1: 'Soy desarrollador y diseñador web basado en Dornbirn, Austria, especializado en sitios web limpios, modernos y responsives para pequeñas empresas, organizaciones sin fines de lucro y profesionales creativos.',
       p2: 'Con formación en decoración de interiores y diseño, aporto una fuerte visión para el diseño, color y armonía espacial a cada proyecto web. También dirijo una organización sin fines de lucro, lo que me da experiencia práctica en infraestructura digital, creación de contenido y gestión de redes sociales.',
       p3: 'Creo que un sitio web debe ser rápido, accesible y fácil de mantener. Sin dependencias bloqueadas, sin complejidad innecesaria — solo trabajo limpio que sirve a tus objetivos.',
+      p4: 'Al elegir mis servicios, también apoyas la Woascht Wohl & Free People Organization (WWFP) — una organización sin fines de lucro dedicada a los derechos de hábitat y la protección ambiental. El 100% de las ganancias va directamente a la misión de WWFP. Obtienes un excelente sitio web y haces algo bueno al mismo tiempo.',
+      wwfpBadge: 'Cada proyecto apoya a WWFP — el 100% de las ganancias va a la misión sin fines de lucro',
     },
     contact: {
       title: 'Trabajemos juntos',
@@ -186,8 +207,11 @@ export const translations = {
     portfolio: {
       title: 'Lavori recenti',
       subtitle: 'Siti web che ho progettato e costruito',
-      wwfp: { title: 'WWFP — Free People Organization', desc: 'Sito web multilingue per un\'organizzazione no-profit con 127 pagine in 9 lingue. Hero video a schermo intero, sezione negozio con 5 negozi di artigiani, SEO ottimizzato. Costruito con Astro, distribuito su Cloudflare Pages.' },
+      wwfp: { title: 'WWFP — Free People Organization', desc: 'Sito web multilingue per un\'organizzazione no-profit con 145 pagine in 9 lingue. Hero video a schermo intero, sezione negozio con 5 negozi di artigiani, pagina servizi, SEO ottimizzato. Costruito con Astro, distribuito su Cloudflare Pages.' },
       woascht: { title: 'Woascht Wohl — Sito aziendale', desc: 'Sito web responsive per una distilleria. Pagine prodotto, eventi, modulo di contatto. Costruito con Astro.' },
+      ai: { title: 'Infrastruttura AI Self-Hosted', desc: 'Infrastruttura AI completa con multipli LLM, vector embeddings, sistemi di memoria e pipeline di automazione. Docker, Linux, Ollama.' },
+      youtube: { title: 'Canale YouTube & Produzione Video', desc: 'Canale YouTube completo: branding, logo, banner, produzione video, gestione playlist, descrizioni SEO.' },
+      services: { title: 'WWFP Web & Media Services', desc: 'Pagina servizi: sviluppo web, integrazione AI, produzione video, design grafico, amministrazione server. Il 100% dei profitti sostiene il lavoro no-profit di WWFP.' },
     },
     about: {
       title: 'Su di me',
@@ -195,6 +219,8 @@ export const translations = {
       p1: 'Sono uno sviluppatore e designer web con sede a Dornbirn, in Austria, specializzato in siti web puliti, moderni e responsivi per piccole aziende, organizzazioni no-profit e professionisti creativi.',
       p2: 'Con una formazione in arredamento e design, porto un forte occhio per layout, colori e armonia spaziale in ogni progetto web. Dirigo anche un\'organizzazione no-profit, che mi dà esperienza pratica in infrastruttura digitale, creazione di contenuti e gestione dei social media.',
       p3: 'Credo che un sito web debba essere veloce, accessibile e facile da mantenere. Nessuna dipendenza bloccata, nessuna complessità non necessaria — solo lavoro pulito che serve ai tuoi obiettivi.',
+      p4: "Scegliendo i miei servizi, sostieni anche la Woascht Wohl & Free People Organization (WWFP) — un'organizzazione no-profit dedicata ai diritti dell'habitat e alla protezione ambientale. Il 100% dei profitti va direttamente alla missione di WWFP. Ottieni un ottimo sito web e fai qualcosa di bene allo stesso tempo.",
+      wwfpBadge: 'Ogni progetto sostiene WWFP — il 100% dei profitti va alla missione no-profit',
     },
     contact: {
       title: 'Lavoriamo insieme',
@@ -203,6 +229,50 @@ export const translations = {
       phone: 'Telefono',
     },
     footer: '© 2026 Christian Karg — Web Developer & Designer — Dornbirn, Austria',
+  },
+  ar: {
+    nav: { services: 'الخدمات', portfolio: 'أعمالي', about: 'عني', contact: 'اتصل بي' },
+    hero: {
+      title: 'مطور ومصمم مواقع',
+      subtitle: 'مواقع ويب حديثة ومتجاوبة للشركات الصغيرة والمنظمات غير الربحية. مقر في دورنبيرن، النمسا. كل مشروع يدعم مهمة WWFP غير الربحية.',
+      viewWork: 'شاهد أعمالي',
+      getInTouch: 'تواصل معي',
+    },
+    services: {
+      title: 'ماذا أفعل',
+      subtitle: 'تطوير وتصميم ويب متكامل',
+      webDesign: { title: 'تصميم الويب', text: 'مواقع نظيفة وحديثة ومتجاوبة تبدو رائعة على كل جهاز.' },
+      development: { title: 'التطوير', text: 'WordPress، Astro، HTML، CSS، JavaScript — مبنية من الصفر، بدون قوالب متضخمة.' },
+      responsive: { title: 'متجاوب', text: 'تصميم يبدأ من الهاتف يعمل بشكل مثالي على الكمبيوتر واللوحي والهاتف.' },
+      seo: { title: 'تحسين محركات البحث', text: 'SEO على الصفحة: روابط نظيفة، وسوم وصفية، نصوص بديلة، تحميل سريع، HTML دلالي.' },
+      performance: { title: 'الأداء', text: 'مواقع سريعة التحميل مع كود وصور محسّنة. السرعة مهمة.' },
+      handover: { title: 'التسليم', text: 'تدريب قصير لتتمكن من تحديث محتواك بنفسك. لا اعتماد مقفل.' },
+    },
+    portfolio: {
+      title: 'أعمال حديثة',
+      subtitle: 'مواقع صممتها وبنيتها',
+      wwfp: { title: 'WWFP — منظمة الشعب الحر', desc: 'موقع غير ربحي متعدد اللغات بـ 161 صفحة في 10 لغات. فيديو افتتاحي بملء الشاشة، قسم متجر بـ 5 متاجر حرفيين، صفحة خدمات، محسّن لمحركات البحث. مبني بـ Astro، منشر على Cloudflare Pages.' },
+      woascht: { title: 'ووشت وول — موقع تجاري', desc: 'موقع متجاوب لمقطرة مشروبات روحية. صفحات منتجات، فعاليات، نموذج اتصال. مبني بـ Astro.' },
+      ai: { title: 'بنية تحتية للذكاء الاصطناعي مستضافة ذاتياً', desc: 'بنية تحتية كاملة للذكاء الاصطناعي مع نماذج لغوية متعددة، تضمين متجه، أنظمة ذاكرة، وخطوط أتمتة. Docker، Linux، Ollama.' },
+      youtube: { title: 'قناة يوتيوب وإنتاج فيديو', desc: 'قناة يوتيوب كاملة: هوية بصرية، شعار، لافتة، إنتاج فيديو، إدارة قوائم التشغيل، أوصاف محسّنة.' },
+      services: { title: 'خدمات WWFP للويب والإعلام', desc: 'صفحة خدمات: تطوير ويب، تكامل ذكاء اصطناعي، إنتاج فيديو، تصميم جرافيكي، إدارة خوادم. 100٪ من الأرباح تدعم عمل WWFP غير الربحي.' },
+    },
+    about: {
+      title: 'عني',
+      subtitle: 'قليل عن من أنا',
+      p1: 'أنا مطور ومصمم ويب مقر في دورنبيرن، النمسا، متخصص في مواقع نظيفة وحديثة ومتجاوبة للشركات الصغيرة والمنظمات غير الربحية والمحترفين المبدعين.',
+      p2: 'بخلفية في الديكور الداخلي والتصميم، أحمل عيناً ثاقبة للتخطيط والألوان والانسجام المكاني لكل مشروع ويب. أدير أيضاً منظمة غير ربحية، مما يمنحني خبرة عملية في البنية التحتية الرقمية وإنشاء المحتوى وإدارة وسائل التواصل.',
+      p3: 'أؤمن أن الموقع يجب أن يكون سريعاً ومتاحاً وسهل الصيانة. لا اعتماد مقفل، لا تعقيد غير ضروري — فقط عمل نظيف يخدم أهدافك.',
+      p4: 'باختيار خدماتي، تدعم أيضاً منظمة ووشت وول والشعب الحر (WWFP) — منظمة غير ربحية مكرسة لحقوق الموئل وحماية البيئة. 100٪ من الأرباح تذهب مباشرة إلى مهمة WWFP. تحصل على موقع رائع وتفعل خيراً في نفس الوقت.',
+      wwfpBadge: 'كل مشروع يدعم WWFP — 100٪ من الأرباح تذهب إلى المهمة غير الربحية',
+    },
+    contact: {
+      title: 'لنعمل معاً',
+      subtitle: 'لديك مشروع في ذهنك؟ لنتحدث.',
+      email: 'البريد الإلكتروني',
+      phone: 'الهاتف',
+    },
+    footer: '© 2026 كريستيان كارغ — مطور ومصمم ويب — دورنبيرن، النمسا',
   },
 };
 

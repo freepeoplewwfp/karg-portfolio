@@ -10,21 +10,50 @@ export async function getStaticPaths() {
 
 const { lang } = Astro.props;
 const t = getTranslations(lang);
+const langPrefix = lang === defaultLang ? '' : `/${lang}`;
 
 const projects = [
+  {
+    title: 'GrapheneOS Privacy Phones',
+    description: lang === 'de' ? 'GrapheneOS-Smartphones — kein Google-Tracking, keine Überwachung, volle Kontrolle. Installationsservice und Verkauf über WWFP.' : 'GrapheneOS smartphones — no Google tracking, no surveillance, full control. Installation service and sales via WWFP.',
+    url: `https://wwfp.global/${lang}/shop/grapheneos-phones/`,
+    tags: ['GrapheneOS', 'Privacy', 'Pixel', 'No-Google', 'WWFP'],
+    image: '/images/grapheneos-phone-shaped.png'
+  },
   {
     title: t.portfolio.wwfp.title,
     description: t.portfolio.wwfp.desc,
     url: 'https://wwfp-website.pages.dev/en/',
-    tags: ['Astro', 'HTML', 'CSS', 'JS', 'SEO'],
+    tags: ['Astro', 'HTML', 'CSS', 'JS', 'SEO', 'i18n'],
     image: '/wwfp-logo.png'
+  },
+  {
+    title: t.portfolio.services.title,
+    description: t.portfolio.services.desc,
+    url: 'https://wwfp-website.pages.dev/de/services',
+    tags: ['Services', 'Web Dev', 'AI', 'Video', 'Design'],
+    image: '🤝'
   },
   {
     title: t.portfolio.woascht.title,
     description: t.portfolio.woascht.desc,
-    url: '#',
+    url: 'https://woaschtwohl-website.pages.dev',
     tags: ['Astro', 'HTML', 'CSS', 'Responsive'],
     image: '🥃'
+  },
+  {
+    title: t.portfolio.ai.title,
+    description: t.portfolio.ai.desc,
+    url: '#',
+    tags: ['Docker', 'Linux', 'Ollama', 'AI', 'Automation'],
+    image: '🤖'
+  },
+  {
+    title: t.portfolio.youtube.title,
+    description: t.portfolio.youtube.desc,
+    url: 'https://www.youtube.com/@wwfp_people_org',
+    tags: ['YouTube', 'Video', 'Branding', 'SEO'],
+    image: '▶️'
   }
 ];
 
@@ -37,7 +66,6 @@ const services = [
   { icon: '🤝', title: t.services.handover.title, text: t.services.handover.text }
 ];
 
-const langPrefix = lang === defaultLang ? '' : `/${lang}`;
 ---
 
 <!DOCTYPE html>
@@ -374,6 +402,38 @@ const langPrefix = lang === defaultLang ? '' : `/${lang}`;
       margin-top: 2rem;
     }
 
+    .wwfp-badge {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: var(--surface);
+      border: 1px solid var(--accent);
+      border-radius: 12px;
+      padding: 1.2rem 1.5rem;
+      margin: 2.5rem auto 0;
+      max-width: 500px;
+    }
+
+    .wwfp-badge-logo {
+      width: 40px;
+      height: auto;
+      flex-shrink: 0;
+    }
+
+    .wwfp-badge span {
+      font-size: 0.95rem;
+      color: var(--text);
+      text-align: left;
+      flex: 1;
+    }
+
+    .wwfp-badge-link {
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
     .skill-badge {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -409,6 +469,69 @@ const langPrefix = lang === defaultLang ? '' : `/${lang}`;
     }
 
     .contact-link:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* === PAYMENT === */
+    .payment-info {
+      margin-top: 1.5rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: left;
+    }
+
+    .payment-info h3 {
+      text-align: center;
+      margin-bottom: 1.2rem;
+      font-size: 1.1rem;
+    }
+
+    .payment-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.9rem;
+    }
+
+    .payment-row:last-child { border-bottom: none; }
+
+    .payment-row .label { color: var(--text-dim); }
+    .payment-row .value { color: var(--text); font-family: monospace; }
+
+    .copy-btn {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      color: var(--text-dim);
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      transition: all 0.2s;
+    }
+
+    .copy-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .copy-btn.copied { border-color: #2d8a3d; color: #2d8a3d; }
+
+    .payment-cta {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .payment-note {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      margin-top: 1rem;
+      font-style: italic;
+    }
 
     /* === FOOTER === */
     footer {
@@ -533,6 +656,12 @@ const langPrefix = lang === defaultLang ? '' : `/${lang}`;
       <p>{t.about.p1}</p>
       <p>{t.about.p2}</p>
       <p>{t.about.p3}</p>
+      <p>{t.about.p4}</p>
+      <div class="wwfp-badge">
+        <img src="/wwfp-logo.png" alt="WWFP" class="wwfp-badge-logo" />
+        <span>{t.about.wwfpBadge}</span>
+        <a href="https://wwfp-website.pages.dev/de/services" target="_blank" class="wwfp-badge-link">→</a>
+      </div>
       <div class="skills">
         <span class="skill-badge">HTML</span>
         <span class="skill-badge">CSS</span>
@@ -551,10 +680,42 @@ const langPrefix = lang === defaultLang ? '' : `/${lang}`;
     <h2 class="section-title">{t.contact.title}</h2>
     <p class="section-subtitle">{t.contact.subtitle}</p>
     <div class="contact-links">
-      <a href="mailto:wwfp-office@proton.me" class="contact-link">✉️ wwfp-office@proton.me</a>
+      <a href="mailto:chris@karg.design" class="contact-link">✉️ chris@karg.design</a>
       <a href="tel:+436505972706" class="contact-link">📱 +43 650 5972706</a>
+      <a href="https://wa.me/436505972706" target="_blank" class="contact-link">💬 WhatsApp</a>
+      <a href="https://t.me/wwfp_people_org" target="_blank" class="contact-link">✈️ Telegram</a>
+      <a href="https://www.youtube.com/@wwfp_people_org" target="_blank" class="contact-link">▶️ YouTube</a>
       <a href="https://github.com/freepeoplewwfp" target="_blank" class="contact-link">🐙 GitHub</a>
-      <a href="https://www.upwork.com" target="_blank" class="contact-link">💼 Upwork</a>
+      <a href="https://wwfp-website.pages.dev/de/" target="_blank" class="contact-link">🤝 WWFP</a>
+    </div>
+
+    <!-- PAYMENT -->
+    <div class="payment-info">
+      <h3>💳 Payment / Bezahlung</h3>
+      <div class="payment-row">
+        <span class="label">Account Holder</span>
+        <span class="value">Christian Karg</span>
+      </div>
+      <div class="payment-row">
+        <span class="label">IBAN</span>
+        <span class="value" id="iban">BE94 9058 8296 2614</span>
+        <button class="copy-btn" onclick="copyText('iban', this)">Copy</button>
+      </div>
+      <div class="payment-row">
+        <span class="label">BIC</span>
+        <span class="value" id="bic">TRWIBEB1XXX</span>
+        <button class="copy-btn" onclick="copyText('bic', this)">Copy</button>
+      </div>
+      <div class="payment-row">
+        <span class="label">Bank</span>
+        <span class="value">Wise, Brussels</span>
+      </div>
+      <div class="payment-cta">
+        <a href="https://wa.me/436505972706?text=Hi%20Chris,%20ich%20m%C3%B6chte%20f%C3%BCr%20Web%20Development%20Services%20bezahlen." target="_blank" class="btn btn-primary" style="padding: 0.7rem 1.5rem; font-size: 0.9rem;">💬 Bezahlen per WhatsApp</a>
+        <a id="paypal-btn" href="#" class="btn btn-secondary" style="padding: 0.7rem 1.5rem; font-size: 0.9rem; border-color: #0070ba; color: #0070ba;">🅿️ PayPal</a>
+        <a href="mailto:chris@karg.design?subject=Rechnung%20/%20Invoice&body=Hi%20Chris,%20bitte%20schick%20mir%20eine%20Rechnung%20f%C3%BCr%20..." class="btn btn-secondary" style="padding: 0.7rem 1.5rem; font-size: 0.9rem;">📋 Rechnung anfordern</a>
+      </div>
+      <p class="payment-note">Bank transfer (SEPA), PayPal, or request an invoice via WhatsApp/Email. Business account coming soon.</p>
     </div>
   </section>
 
@@ -570,6 +731,16 @@ const langPrefix = lang === defaultLang ? '' : `/${lang}`;
         document.getElementById('navmenu').classList.remove('open');
       });
     });
+
+    // Copy to clipboard
+    function copyText(id, btn) {
+      const text = document.getElementById(id).textContent.replace(/\s/g, '');
+      navigator.clipboard.writeText(text).then(() => {
+        btn.textContent = '✓ Copied';
+        btn.classList.add('copied');
+        setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+      });
+    }
 
     // Close lang dropdown on outside click
     document.addEventListener('click', (e) => {
